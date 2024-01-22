@@ -20,7 +20,6 @@ public class AttackCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger");
         if (other.GetType() == typeof(MeshCollider))
         {
             // Destroy(other.GameObject);

@@ -58,6 +58,11 @@ namespace StarterAssets
 		public GameObject attackCollider;
 		public GameObject attackColliderSpawnPoint;
 
+		[SerializeField] LineRenderer _beam;
+		[SerializeField] Transform _muzzlePoint;
+		[SerializeField] float _maxLength;
+
+
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -107,6 +112,8 @@ namespace StarterAssets
 			attackControl.player.attack.performed += handleAttack;
 
 			attackControl.player.lasor.performed += handleLasor;
+			attackControl.player.lasor.canceled += HandleLasorCanceled;
+			_beam.enabled = false;
 		}
 
 		private void Start()
@@ -131,9 +138,34 @@ namespace StarterAssets
 			Move();
 		}
 
+		private void FixedUpdate()
+		{
+			if (!_beam.enabled)
+			{
+				return;
+			}
+
+			Ray ray = new Ray(_muzzlePoint.position, _muzzlePoint.forward);
+			bool cast = Physics.Raycast(ray, out RaycastHit hit, _maxLength);
+			Vector3 hitPosition = cast ? hit.point : _muzzlePoint.position + _muzzlePoint.forward * _maxLength;
+
+			_beam.SetPosition(0, _muzzlePoint.position);
+			_beam.SetPosition(1, hitPosition);
+		}
+
 		private void LateUpdate()
 		{
 			CameraRotation();
+		}
+
+		void Activate()
+		{
+			_beam.enabled = true;
+		}
+
+		void Deactivate()
+		{
+			_beam.enabled = false;
 		}
 
 		private void GroundedCheck()
@@ -222,6 +254,13 @@ namespace StarterAssets
 		void handleLasor(InputAction.CallbackContext context)
 		{
 			Debug.Log("Lasor");
+			_beam.enabled = true;
+		}
+
+		void HandleLasorCanceled(InputAction.CallbackContext context)
+		{
+			Debug.Log("Lasor Canceled");
+			_beam.enabled = false;
 		}
 
 		void handleAttack(InputAction.CallbackContext context)
