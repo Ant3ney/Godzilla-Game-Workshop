@@ -62,6 +62,11 @@ namespace StarterAssets
 		[SerializeField] Transform _muzzlePoint;
 		[SerializeField] float _maxLength;
 
+		public ParticleSystem fireBreath;
+		public float maxBreathTime = 10f;
+		public float breathUsageRate = 1f;
+		public float breathRechargeRate = 1f;
+		public GameObject destructionSpoke;
 
 
 		// cinemachine
@@ -114,6 +119,7 @@ namespace StarterAssets
 			attackControl.player.lasor.performed += handleLasor;
 			attackControl.player.lasor.canceled += HandleLasorCanceled;
 			_beam.enabled = false;
+			fireBreath.Stop();
 		}
 
 		private void Start()
@@ -142,6 +148,11 @@ namespace StarterAssets
 		{
 			if (!_beam.enabled)
 			{
+				maxBreathTime += breathRechargeRate / 50;
+				if (maxBreathTime >= 10)
+				{
+					maxBreathTime = 10;
+				}
 				return;
 			}
 
@@ -151,6 +162,31 @@ namespace StarterAssets
 
 			_beam.SetPosition(0, _muzzlePoint.position);
 			_beam.SetPosition(1, hitPosition);
+
+			if (cast && hit.collider.TryGetComponent(out BuildingHealth buildingHealth))
+			{
+				bool isDead = buildingHealth.TakeDamage(10);
+
+				if (isDead && hit.collider.TryGetComponent(out MeshCollider meshCollider))
+				{
+
+					Vector3 center = meshCollider.bounds.center;
+					GameObject.Destroy(hit.collider.gameObject);
+					Instantiate(destructionSpoke, center, Quaternion.identity);
+				}
+
+			}
+
+
+
+			maxBreathTime -= breathRechargeRate / 50;
+			if (maxBreathTime <= 0)
+			{
+				maxBreathTime = 0;
+				_beam.enabled = false;
+				fireBreath.Stop();
+			}
+
 		}
 
 		private void LateUpdate()
@@ -161,6 +197,7 @@ namespace StarterAssets
 		void Activate()
 		{
 			_beam.enabled = true;
+
 		}
 
 		void Deactivate()
@@ -255,12 +292,14 @@ namespace StarterAssets
 		{
 			Debug.Log("Lasor");
 			_beam.enabled = true;
+			fireBreath.Play();
 		}
 
 		void HandleLasorCanceled(InputAction.CallbackContext context)
 		{
 			Debug.Log("Lasor Canceled");
 			_beam.enabled = false;
+			fireBreath.Stop();
 		}
 
 		void handleAttack(InputAction.CallbackContext context)

@@ -7,6 +7,9 @@ public class AttackCollision : MonoBehaviour
     // Start is called before the first frame update
     public CapsuleCollider attackCollider;
     public GameObject destructionSpoke;
+
+    public float maxTime = 0.125f;
+    public float time = 0f;
     void Start()
     {
 
@@ -15,7 +18,11 @@ public class AttackCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        time += Time.deltaTime;
+        if (time >= maxTime)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
