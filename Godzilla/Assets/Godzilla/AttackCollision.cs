@@ -12,7 +12,6 @@ public class AttackCollision : MonoBehaviour
     public float time = 0f;
     void Start()
     {
-
     }
 
     // Update is called once per frame

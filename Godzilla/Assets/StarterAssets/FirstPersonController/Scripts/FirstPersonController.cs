@@ -177,6 +177,11 @@ namespace StarterAssets
 
 			}
 
+			if (cast && hit.collider.TryGetComponent(out Missle missile))
+			{
+				missile.Destroy();
+			}
+
 
 
 			maxBreathTime -= breathRechargeRate / 50;
