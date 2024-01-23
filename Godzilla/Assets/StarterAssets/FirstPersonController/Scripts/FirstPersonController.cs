@@ -2,6 +2,7 @@
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
+using UnityEngine.UI;
 
 namespace StarterAssets
 {
@@ -68,6 +69,7 @@ namespace StarterAssets
 		public float breathRechargeRate = 1f;
 		public GameObject destructionSpoke;
 
+		public GameObject player_health_left_bar;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -180,6 +182,11 @@ namespace StarterAssets
 			if (cast && hit.collider.TryGetComponent(out Missle missile))
 			{
 				missile.Destroy();
+			}
+
+			if (cast && hit.collider.TryGetComponent(out MechaGodzilla mechaGodzilla))
+			{
+				mechaGodzilla.takeDamage(0.125f);
 			}
 
 

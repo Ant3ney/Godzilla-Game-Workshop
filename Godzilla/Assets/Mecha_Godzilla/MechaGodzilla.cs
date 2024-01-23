@@ -15,6 +15,16 @@ public class MechaGodzilla : MonoBehaviour
 
     public GameObject missilePrefab;
 
+    public GameObject enemy_health_left_bar;
+
+    public float maxHealthBarWidth = 211.5548f;
+
+    public float maxHealth = 100f;
+    public float health = 100f;
+
+    public bool isReactingToHit = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,5 +78,39 @@ public class MechaGodzilla : MonoBehaviour
     {
         GameObject missile = Instantiate(missilePrefab, missilePoint.position, Quaternion.identity);
         missile.GetComponent<Missle>().playerTransform = playerTransform;
+    }
+
+    public void takeDamage(float damage)
+    {
+
+        health -= damage;
+        updateHealthBar(health);
+        if (health <= 0)
+        {
+        }
+        if (isReactingToHit)
+        {
+            return;
+        }
+        animator.SetTrigger("hit");
+        isReactingToHit = true;
+    }
+
+    public void updateHealthBar(float health)
+    {
+        float healthBarRatio = health / maxHealth;
+        if (healthBarRatio <= 0)
+        {
+            healthBarRatio = 0;
+        }
+        float newHealthBarWidth = maxHealthBarWidth * healthBarRatio;
+        RectTransform healthLeft = enemy_health_left_bar.GetComponent<RectTransform>();
+        healthLeft.localScale = new Vector3(healthBarRatio, healthLeft.localScale.y, healthLeft.localScale.z);
+    }
+
+
+    public void doneReactingToHit()
+    {
+        isReactingToHit = false;
     }
 }

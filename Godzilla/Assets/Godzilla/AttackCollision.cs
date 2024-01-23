@@ -43,6 +43,16 @@ public class AttackCollision : MonoBehaviour
                 Destroy(collidedObject);
             }
         }
+        else if (other.GetType() == typeof(CapsuleCollider))
+        {
+            GameObject collidedObject = other.gameObject;
+            MechaGodzilla mechaGodzilla = collidedObject.GetComponent<MechaGodzilla>();
+            if (mechaGodzilla == null)
+            {
+                return;
+            }
+            mechaGodzilla.takeDamage(2f);
+        }
         //speed = speed * -1;
     }
 }
