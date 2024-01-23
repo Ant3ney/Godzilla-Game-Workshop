@@ -71,6 +71,12 @@ namespace StarterAssets
 
 		public GameObject player_health_left_bar;
 
+		public float maxHealth = 100f;
+
+		public float health = 100f;
+
+
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -329,6 +335,31 @@ namespace StarterAssets
 			// If health is 0, destroy object
 
 
+		}
+
+		public void takeDamage(float damage)
+		{
+			health -= damage;
+			if (health <= 0)
+			{
+				health = 0;
+				// Game Over
+				// Load Game Over Scene
+				//SceneManager.LoadScene("GameOverScene"
+				Navigator.navigateToStatic("Failure");
+			}
+			updateHealthUI();
+		}
+
+		void updateHealthUI()
+		{
+			float healthBarRatio = health / maxHealth;
+			if (healthBarRatio <= 0)
+			{
+				healthBarRatio = 0;
+			}
+			RectTransform healthLeft = player_health_left_bar.GetComponent<RectTransform>();
+			healthLeft.localScale = new Vector3(healthBarRatio, healthLeft.localScale.y, healthLeft.localScale.z);
 		}
 
 		private void JumpAndGravity()

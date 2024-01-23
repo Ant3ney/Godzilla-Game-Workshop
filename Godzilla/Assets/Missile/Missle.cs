@@ -83,6 +83,7 @@ public class Missle : MonoBehaviour
         else if (other.gameObject.TryGetComponent(out FirstPersonController player))
         {
             // Damage health here
+            player.takeDamage(40f);
 
         }
         // instantiate explosion prefab at hitPosition

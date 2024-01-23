@@ -35,7 +35,7 @@ public class MechaGodzilla : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerTransform != null)
+        if (playerTransform != null && !isReactingToHit)
         {
             float distance = Vector3.Distance(playerTransform.position, transform.position);
             if (distance <= shootDistance)
@@ -53,6 +53,10 @@ public class MechaGodzilla : MonoBehaviour
                 animator.SetTrigger("run");
             }
             agent.SetDestination(playerTransform.position);
+        }
+        else if (isReactingToHit)
+        {
+            agent.isStopped = true;
         }
     }
 
@@ -87,6 +91,7 @@ public class MechaGodzilla : MonoBehaviour
         updateHealthBar(health);
         if (health <= 0)
         {
+            Navigator.navigateToStatic("Victory");
         }
         if (isReactingToHit)
         {

@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 2ec74ea09c54c2842b227fb292257cea
+  - enabled: 1
+    path: Assets/Scenes/Godzila_Workshop.unity
+    guid: 9f5277cc19a018247a2c0b1d578c4fd2
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 1f120e0fa18f9ea47a6f6bf566937881
+  - enabled: 1
+    path: Assets/Scenes/Failure.unity
+    guid: 730cab3e278032b41abdd355ba4d56a4
   m_configObjects: {}
