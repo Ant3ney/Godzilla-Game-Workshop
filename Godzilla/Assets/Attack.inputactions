@@ -1,0 +1,54 @@
+{
+    "name": "Attack",
+    "maps": [
+        {
+            "name": "player",
+            "id": "20a35cfb-66c1-4529-b7f7-88206856699b",
+            "actions": [
+                {
+                    "name": "attack",
+                    "type": "Button",
+                    "id": "78d08129-8fdf-40ff-b1fd-1669d1989cbc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "lasor",
+                    "type": "Button",
+                    "id": "43c7091e-329f-40c3-a93f-2e2f4b21c936",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6cdfaf36-1b99-4c36-ba97-d4fb419a7ccb",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "224f281f-2fb4-4949-bd8e-797f7cccd191",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "lasor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
