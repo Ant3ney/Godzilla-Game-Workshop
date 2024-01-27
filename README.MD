@@ -1,5 +1,4 @@
 # Godzilla Game Workshop
-<<<<<<< HEAD
 
 ## Discover Game Development: An Introduction to Unity with a Godzilla-Inspired First-Person Shooter
 
@@ -8,5 +7,3 @@ Embark on a journey into the world of video game creation with our hands-on work
 Participants will learn the fundamentals of game design and development by constructing a first-person shooter game. What makes this experience even more thrilling is that you'll step into the virtual shoes of Godzilla, an iconic and colossal creature, as the main character. This immersive project will not only introduce you to the basics of Unity but also allow you to explore the creative and technical aspects of building a game from scratch.
 
 Whether you're a gaming enthusiast, aspiring developer, or just curious about game design, this workshop is the perfect starting point to unlock your potential in the exciting realm of video game development.
-=======
->>>>>>> dbe9c90724e1a17ddcc91e2e0971590555786a79
