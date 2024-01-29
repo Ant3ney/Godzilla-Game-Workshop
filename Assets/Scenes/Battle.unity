@@ -15191,7 +15191,7 @@ GameObject:
   - component: {fileID: 8407820418819131306}
   - component: {fileID: 6244158200317422274}
   m_Layer: 0
-  m_Name: arms_idle_02
+  m_Name: Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
