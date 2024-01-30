@@ -45,13 +45,8 @@ public class AttackCollision : MonoBehaviour
         }
         else if (other.GetType() == typeof(CapsuleCollider))
         {
-            GameObject collidedObject = other.gameObject;
-            MechaGodzilla mechaGodzilla = collidedObject.GetComponent<MechaGodzilla>();
-            if (mechaGodzilla == null)
-            {
-                return;
-            }
-            mechaGodzilla.takeDamage(2f);
+            //Event_System.takeDamage(1, "player");
+            GlueScript.damageMechaGodzillaEvent(1f);
         }
         //speed = speed * -1;
     }
