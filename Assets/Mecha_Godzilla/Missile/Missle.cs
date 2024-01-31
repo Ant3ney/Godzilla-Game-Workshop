@@ -84,7 +84,6 @@ public class Missle : MonoBehaviour
         {
             // Damage health here
             player.takeDamage(40f);
-
         }
         // instantiate explosion prefab at hitPosition
 

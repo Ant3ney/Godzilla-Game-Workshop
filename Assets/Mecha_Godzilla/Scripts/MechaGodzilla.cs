@@ -15,10 +15,7 @@ public class MechaGodzilla : MonoBehaviour
 
     public GameObject missilePrefab;
 
-    public GameObject enemy_health_left_bar;
-
     public float maxHealthBarWidth = 211.5548f;
-
     public float maxHealth = 100f;
     public float health = 100f;
 
@@ -30,6 +27,19 @@ public class MechaGodzilla : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        GlueScript.onDamageMechaGodzilla += takeDamage;
+        if (playerTransform == null)
+        {
+            playerTransform = GameObject.Find("Godzilla").transform;
+        }
+        if (playerTransform != null)
+        {
+            Debug.Log("Moving MechaGodzilla to Godzilla. Starting position: " + transform.position);
+        }
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player Transform not found");
+        }
     }
 
     // Update is called once per frame
@@ -91,7 +101,7 @@ public class MechaGodzilla : MonoBehaviour
         updateHealthBar(health);
         if (health <= 0)
         {
-            Navigator.navigateToStatic("Victory");
+            //    Navigator.navigateToStatic("Victory");
         }
         if (isReactingToHit)
         {
@@ -109,8 +119,9 @@ public class MechaGodzilla : MonoBehaviour
             healthBarRatio = 0;
         }
         float newHealthBarWidth = maxHealthBarWidth * healthBarRatio;
-        RectTransform healthLeft = enemy_health_left_bar.GetComponent<RectTransform>();
-        healthLeft.localScale = new Vector3(healthBarRatio, healthLeft.localScale.y, healthLeft.localScale.z);
+        GlueScript.updateMechaGodzillaUIEvent(healthBarRatio);
+        //RectTransform healthLeft = enemy_health_left_bar.GetComponent<RectTransform>();
+        //healthLeft.localScale = new Vector3(healthBarRatio, healthLeft.localScale.y, healthLeft.localScale.z);
     }
 
 

@@ -181,7 +181,7 @@ namespace StarterAssets
 					}
 					else if (hit.collider.gameObject.tag == "Missile")
 					{
-						Destroy(hit.collider.gameObject);
+						hit.collider.gameObject.SendMessage("Destroy");
 					}
 				}
 			}
@@ -338,7 +338,7 @@ namespace StarterAssets
 				// Game Over
 				// Load Game Over Scene
 				//SceneManager.LoadScene("GameOverScene"
-				Navigator.navigateToStatic("Failure");
+				//Navigator.navigateToStatic("Failure");
 			}
 			updateHealthUI();
 		}
@@ -350,8 +350,9 @@ namespace StarterAssets
 			{
 				healthBarRatio = 0;
 			}
-			RectTransform healthLeft = player_health_left_bar.GetComponent<RectTransform>();
-			healthLeft.localScale = new Vector3(healthBarRatio, healthLeft.localScale.y, healthLeft.localScale.z);
+			GlueScript.updateGodzillaUIEvent(healthBarRatio);
+			//RectTransform healthLeft = player_health_left_bar.GetComponent<RectTransform>();
+			//healthLeft.localScale = new Vector3(healthBarRatio, healthLeft.localScale.y, healthLeft.localScale.z);
 		}
 
 		private void JumpAndGravity()
