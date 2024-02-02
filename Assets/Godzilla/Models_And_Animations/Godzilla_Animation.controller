@@ -36,7 +36,8 @@ BlendTree:
   m_Name: Idle_Walk
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 6439472898162460162, guid: 92d2784f59b2aee4589ee8747d9e7244, type: 3}
+    m_Motion: {fileID: 6439472898162460162, guid: 92d2784f59b2aee4589ee8747d9e7244,
+      type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -44,7 +45,8 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 6439472898162460162, guid: 9225462e164cb3445873b0ab8fc8ba6e, type: 3}
+    m_Motion: {fileID: 6439472898162460162, guid: 9225462e164cb3445873b0ab8fc8ba6e,
+      type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -98,19 +100,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Velocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -185,7 +187,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6439472898162460162, guid: 9225462e164cb3445873b0ab8fc8ba6e, type: 3}
+  m_Motion: {fileID: 6439472898162460162, guid: 9225462e164cb3445873b0ab8fc8ba6e,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -228,7 +231,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6439472898162460162, guid: 92d2784f59b2aee4589ee8747d9e7244, type: 3}
+  m_Motion: {fileID: 6439472898162460162, guid: 92d2784f59b2aee4589ee8747d9e7244,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
